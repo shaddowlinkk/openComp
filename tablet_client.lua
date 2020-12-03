@@ -35,8 +35,21 @@ function disp(cur,max)
   gpu.setBackground(0xffffff) 
   gpu.fill(1,3,w,1, " ")
 end
+
+function dispOut()
+  gpu.setResolution(23,5)
+  gpu.setBackground(0x000000,false)
+  gpu.fill(1,1,23,5, " ")
+  gpu.setBackground(0x000000,false)
+  gpu.set((2),(2),"Out of Range")
+end
+
 while true do
   local _, _, _, _, _, message = event.pull("modem_message")
-  local data = split(message,"|")
-  disp(tonumber(data[1]),tonumber(data[2]))
+  if(message)then
+    local data = split(message,"|")
+    disp(tonumber(data[1]),tonumber(data[2]))
+  else
+    dispOut()
+  end
 end
