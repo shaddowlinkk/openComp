@@ -2,6 +2,8 @@ local comp = require("component")
 local react= comp.list("br_reactor")
 local reactor = comp.proxy(next(react))
 local m = comp.modem 
+m.open(123)
+print(m.isOpen(123))
 --local eng = comp.list("energy_device")
 local gpu = comp.gpu
 
