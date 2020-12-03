@@ -17,6 +17,7 @@ function disp(cur,max,alive)
   gpu.fill(1,3,w,1, " ")
 end
 while true do
-  local test, _, _, _, _, message = event.pull("modem_message")
-  print(test)
+  local _, _, _, _, _, message = event.pull("modem_message")
+  local data = split(message,"|")
+  print(data[0])
 end
