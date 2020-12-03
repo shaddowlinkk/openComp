@@ -43,7 +43,7 @@ while true do
   elseif (cur <= (max*.01)) then
     reactor.setActive(true)
   end
-  m.broadcast(123, cur..."|"...max)
+  m.broadcast(123, cur.."|"..max)
   disp(cur,max)
  --local cell= comp.proxy(address)
  --disp(cell.getEnergyStored(),cell.getMaxEnergyStored())
