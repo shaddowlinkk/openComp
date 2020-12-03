@@ -5,13 +5,13 @@ local reactor = comp.proxy(next(react))
 local gpu = comp.gpu
 
 function disp(cur,max,alive)
-  gpu.setResolution(22,5)
+  gpu.setResolution(23,5)
   gpu.setBackground(0x000000,false)
-  gpu.fill(1,1,22,5, " ")
+  gpu.fill(1,1,23,5, " ")
   gpu.setBackground(0x000000,false)
   gpu.set((1),(2),cur.."/"..max.."rf")
-  gpu.fill(1,3,22,1, "-")
-  local w = math.floor(cur*(22/max),false)
+  gpu.fill(1,3,23,1, "-")
+  local w = math.floor(cur*(23/max),false)
   gpu.setBackground(0xffffff) 
   gpu.fill(1,3,w,1, " ")
   
