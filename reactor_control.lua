@@ -1,11 +1,10 @@
 local comp = require("component")
 local react= comp.list("br_reactor")
-local reactor = comp.proxy(next(react))
-local m = comp.modem 
+local reactor = comp.br_reactor
+local m = comp.modem
+local gpu = comp.gpu 
 m.open(123)
 print(m.isOpen(123))
---local eng = comp.list("energy_device")
-local gpu = comp.gpu
 
 function disp(cur,max,alive)
   gpu.setResolution(23,5)
@@ -33,21 +32,17 @@ function getTotal()
   return cur,max
 end
 
---local address = next(eng)
-
 while true do
   local cur,max = getTotal()
-  
-  if (reactor.getActive) then	
-    if(cur >= (max*.99))then
+  if (reactor.getActive()) then
+    if(cur >= (max*.99)) then
       reactor.setActive(false)
-  end
-  elseif (cur <= (max*.01)) then
-    reactor.setActive(true)
+    end
+  else
+    if (cur <= (max*.01)) then
+      reactor.setActive(true)
+    end
   end
   m.broadcast(123, cur.."|"..max)
   disp(cur,max)
- --local cell= comp.proxy(address)
- --disp(cell.getEnergyStored(),cell.getMaxEnergyStored())
- -- disp(2,3)
 end  
